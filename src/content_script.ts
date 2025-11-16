@@ -190,7 +190,7 @@ class SpeechTranslatorController {
 
       const translation = await this.translateText(
         transcript,
-        this.config.inputLang.split('-')[0], // Extract language code
+        this.config.inputLang,
         this.config.outputLang,
       );
 
@@ -300,7 +300,7 @@ class SpeechTranslatorController {
         throw new Error(response.error || 'Translation failed');
       }
 
-      const data: GoogleTranslateResponse = response.data;
+      const data: GoogleTranslateResponse | any = response.data;
 
       // Parse the response - handle multiple response formats
       let translatedText = '';
